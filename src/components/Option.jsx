@@ -1,7 +1,7 @@
 import { useQuestions } from "../context/QuestionsProvider";
 
-function Option() {
-    const { question, dispatch, answer } = useQuestions();
+function Option({ question }) {
+    const { dispatch, answer } = useQuestions();
 
     /* If the question was answered:
         1) Disable all buttons;
