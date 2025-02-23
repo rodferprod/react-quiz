@@ -12,19 +12,7 @@ import Timer from "./Timer";
 import { useQuestions } from "../context/QuestionsProvider";
 
 export default function App() {
-    const {
-        questions,
-        status,
-        index,
-        answer,
-        points,
-        highscore,
-        secondsRemaining,
-        maxPoints,
-        qntQuestions,
-        dispatch,
-
-    } = useQuestions();
+    const { status } = useQuestions();
 
     return (
         <div className="app">
@@ -34,40 +22,19 @@ export default function App() {
                 {status === 'loading' && <Loader />}
                 {status === 'error' && <Error />}
                 {status === 'ready' &&
-                    <StartScreen qntQuestions={qntQuestions} dispatch={dispatch} />
+                    <StartScreen />
                 }
                 {status === 'active' &&
                     <>
-                        <Progress
-                            index={index}
-                            qntQuestions={qntQuestions}
-                            points={points}
-                            maxPoints={maxPoints}
-                            answer={answer}
-                        />
-                        <Question
-                            question={questions[index]}
-                            dispatch={dispatch}
-                            answer={answer}
-                        />
+                        <Progress />
+                        <Question />
                         <Footer>
-                            <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
-                            <NextButton
-                                dispatch={dispatch}
-                                answer={answer}
-                                index={index}
-                                qntQuestions={qntQuestions}
-                            />
+                            <Timer />
+                            <NextButton />
                         </Footer>
                     </>
                 }
-                {status === 'finished' &&
-                    <FinishScreen
-                        points={points}
-                        maxPoints={maxPoints}
-                        highscore={highscore}
-                        dispatch={dispatch}
-                    />}
+                {status === 'finished' && <FinishScreen />}
             </Main>
         </div>
     );

@@ -1,4 +1,8 @@
-function FinishScreen({ points, maxPoints, highscore, dispatch }) {
+import { useQuestions } from "../context/QuestionsProvider";
+
+function FinishScreen() {
+    const { points, maxPoints, highscore, dispatch } = useQuestions();
+
     const percentage = (points / maxPoints) * 100;
     let emoji;
     if (percentage === 100) emoji = "🥇";

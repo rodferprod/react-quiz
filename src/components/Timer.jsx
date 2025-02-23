@@ -1,6 +1,9 @@
 import { useEffect } from "react"
+import { useQuestions } from "../context/QuestionsProvider";
 
-function Timer({ dispatch, secondsRemaining }) {
+function Timer() {
+    const { dispatch, secondsRemaining } = useQuestions();
+
     // Our timer are sending a message to the reducerFn each second
     // and there we'll decrease secondsRemainig until it's zero,
     // so then we'll finish the quiz.

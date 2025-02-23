@@ -1,4 +1,7 @@
-function Progress({ index, qntQuestions, points, maxPoints, answer }) {
+import { useQuestions } from "../context/QuestionsProvider"
+
+function Progress() {
+    const { index, qntQuestions, points, maxPoints, answer } = useQuestions();
     return (
         <header className="progress">
             {/* Trick: We're converting a boolean to number to increase the index when we have an answered question */}
